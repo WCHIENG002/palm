@@ -11,11 +11,11 @@ def index():
     if request.method == "POST":
         q = request.form.get("q")
         print(q)
-        r = palm.chat(
+        response = palm.chat(
               **model,
               messages=q
             )
-        return(render_template("index.html", result = r.last))
+        return(render_template("index.html", result = response.last))
     else:
         return(render_template("index.html", result="waiting for question......."))
 if __name__ =="__main__":
